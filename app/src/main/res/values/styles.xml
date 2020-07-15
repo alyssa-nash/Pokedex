@@ -1,8 +1,0 @@
-<resources>
-
-    <style name="TextAppearance.Pokedex.Overline" parent="TextAppearance.MaterialComponents.Overline">
-        <item name="android:fontFamily">@font/pokemon</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-</resources>
