@@ -1,15 +1,18 @@
 package com.syriusdevelopment.pokedex.data.local
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.syriusdevelopment.pokedex.data.model.PokemonStub
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PokemonStubDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPokemonList(pokemonList: List<PokemonStub>)
+    suspend fun insertAll(pokemon: List<PokemonStub>)
 
-    @Query("SELECT * FROM PokemonStub WHERE page = :page")
-    fun getPokemonListByPage(page: Int): Flow<List<PokemonStub>>
+    @Query("SELECT * FROM PokemonStub")
+    fun getPokemonList(): PagingSource<Int, PokemonStub>
+
+    @Query("DELETE FROM PokemonStub")
+    suspend fun clearAll()
 }

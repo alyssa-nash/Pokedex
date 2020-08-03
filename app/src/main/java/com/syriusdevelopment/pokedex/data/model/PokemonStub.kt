@@ -10,8 +10,7 @@ import com.squareup.moshi.JsonClass
 data class PokemonStub(
     @field:Json(name = "name") val name: String,
     @field:Json(name = "url") val url: String,
-    @PrimaryKey val id: Int = url.split("/".toRegex()).dropLast(1).last().toInt(),
-    val page: Int = id / 20
+    @PrimaryKey val id: Int = url.split("/".toRegex()).dropLast(1).last().toInt()
 ) {
 
     fun getImageUrl(): String {

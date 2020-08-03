@@ -2,15 +2,15 @@ package com.syriusdevelopment.pokedex.ui.pokedex.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.syriusdevelopment.pokedex.data.model.PokemonStub
 import com.syriusdevelopment.pokedex.databinding.ListItemPokemonBinding
 
 class PokemonStubAdapter :
-    ListAdapter<PokemonStub, PokemonStubAdapter.PokemonStubViewHolder>(DIFF_CALLBACK) {
+    PagingDataAdapter<PokemonStub, PokemonStubAdapter.PokemonStubViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonStubViewHolder {
         return PokemonStubViewHolder(
@@ -23,7 +23,10 @@ class PokemonStubAdapter :
     }
 
     override fun onBindViewHolder(holder: PokemonStubViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val pokemonStub = getItem(position)
+        if (pokemonStub != null) {
+            holder.bind(pokemonStub)
+        }
     }
 
     class PokemonStubViewHolder(private val binding: ListItemPokemonBinding) :
