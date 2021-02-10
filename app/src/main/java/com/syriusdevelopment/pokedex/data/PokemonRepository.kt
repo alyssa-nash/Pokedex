@@ -1,5 +1,6 @@
 package com.syriusdevelopment.pokedex.data
 
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -21,6 +22,7 @@ class PokemonRepository @Inject constructor(
 
     private val pokemonStubDao: PokemonStubDao = pokemonDatabase.pokemonStubDao()
 
+    @OptIn(ExperimentalPagingApi::class)
     fun getPokemon(): Flow<PagingData<PokemonStub>> {
         val pagingSourceFactory = { pokemonStubDao.getPokemonList() }
         return Pager(

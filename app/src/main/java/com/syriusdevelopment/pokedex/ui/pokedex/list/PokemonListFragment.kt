@@ -42,7 +42,7 @@ class PokemonListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentPokemonListBinding.inflate(inflater, container, false)
         return binding.root
     }
