@@ -10,12 +10,8 @@ import com.syriusdevelopment.pokedex.data.local.PokemonStubRemoteMediator
 import com.syriusdevelopment.pokedex.data.model.PokemonStub
 import com.syriusdevelopment.pokedex.data.remote.PokeApiService
 import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
-import javax.inject.Singleton
 
-
-@Singleton
-class PokemonRepository @Inject constructor(
+class PokemonRepository constructor(
     private val pokeApiService: PokeApiService,
     private val pokemonDatabase: PokemonDatabase
 ) {

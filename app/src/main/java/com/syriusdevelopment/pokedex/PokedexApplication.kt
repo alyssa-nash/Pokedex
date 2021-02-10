@@ -1,21 +1,17 @@
 package com.syriusdevelopment.pokedex
 
-import android.app.Activity
 import android.app.Application
-import com.syriusdevelopment.pokedex.di.ApplicationComponent
-import com.syriusdevelopment.pokedex.di.DaggerApplicationComponent
+import com.syriusdevelopment.pokedex.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class PokedexApplication : Application() {
 
-    val applicationComponent: ApplicationComponent by lazy {
-        DaggerApplicationComponent.factory().create(applicationContext)
-    }
-
     override fun onCreate() {
         super.onCreate()
-        applicationComponent.inject(this)
+        startKoin {
+            androidContext(this@PokedexApplication)
+            modules(listOf(appModule))
+        }
     }
 }
-
-val Activity.app: PokedexApplication
-    get() = application as PokedexApplication
