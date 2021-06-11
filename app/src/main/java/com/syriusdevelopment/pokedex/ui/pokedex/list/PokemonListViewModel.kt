@@ -5,9 +5,12 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.syriusdevelopment.pokedex.data.PokemonRepository
 import com.syriusdevelopment.pokedex.data.model.PokemonStub
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class PokemonListViewModel (private val pokemonRepository: PokemonRepository) : ViewModel() {
+@HiltViewModel
+class PokemonListViewModel @Inject constructor(private val pokemonRepository: PokemonRepository) : ViewModel() {
 
     private var _listResults: Flow<PagingData<PokemonStub>>? = null
 

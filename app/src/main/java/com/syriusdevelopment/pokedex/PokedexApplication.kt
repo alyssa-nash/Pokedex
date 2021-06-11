@@ -1,17 +1,7 @@
 package com.syriusdevelopment.pokedex
 
 import android.app.Application
-import com.syriusdevelopment.pokedex.di.appModule
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
+import dagger.hilt.android.HiltAndroidApp
 
-class PokedexApplication : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-        startKoin {
-            androidContext(this@PokedexApplication)
-            modules(listOf(appModule))
-        }
-    }
-}
+@HiltAndroidApp
+class PokedexApplication : Application()
